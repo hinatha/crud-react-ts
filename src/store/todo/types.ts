@@ -1,4 +1,3 @@
-import { DeepReadonly } from 'utility-types'
 // "|" means any types
 // FYI: https://typescriptbook.jp/reference/values-types-variables/union
 export type Status = 'waiting' | 'working' | 'completed' | 'pending'
@@ -12,9 +11,9 @@ export interface Todo {
   updatedAt: Date
 }
 
-export interface TodoState {
-  todos: Todo[]
-}
+// export interface TodoState {
+//   todos: Todo[]
+// }
 
 // Params is like below
 // export type Params = {
@@ -34,7 +33,7 @@ export interface TodoStore {
   // state.todos.title.todo1 = 'test' // In case of read-only property, we can change value
   // FYI: https://qiita.com/f96q/items/f4f8869de02963058092
   // #endregion
-  state: DeepReadonly<TodoState>
+  // state: DeepReadonly<TodoState>
   getTodo: (id: number) => void // Don't need to set return todo because of only making store in this time
   addTodo: (todo: Params) => void
   updateTodo: (id: number, todo: Todo) => void
