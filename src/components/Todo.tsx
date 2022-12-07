@@ -1,4 +1,5 @@
 import useTodoList from '../hooks/useTodoList'
+import { Link } from "react-router-dom";
 
 const Todo = () => {
   // get each method or value from custom hooks
@@ -15,6 +16,8 @@ const Todo = () => {
             </li>
           ))}
         </ul>
+        {/* Link for Add Todo */}
+        <Link to="new">Add Todo</Link>
     </div>
   );
 }

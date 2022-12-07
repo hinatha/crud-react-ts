@@ -1,12 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import Todo from './components/Todo';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import RouterConfig from "./router/RouterConfig";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
+ReactDOM.render(
   <React.StrictMode>
-    <Todo />
-  </React.StrictMode>
-);
+   <RouterConfig />
+  </React.StrictMode>,
+  document.getElementById('root')
+)
