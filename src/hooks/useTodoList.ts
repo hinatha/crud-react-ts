@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { Todo, Params } from './types';
+import { Todo, Params } from '../types/index';
 
 // It's mock
 const mockTodo: Todo[] = [
@@ -67,4 +67,3 @@ const useTodoList = () => {
 }
 
 export default useTodoList;
-
