@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Todo, TodoStore, Params } from './types';
+import { Todo, Params } from './types';
 
 // It's mock
 const mockTodo: Todo[] = [
@@ -37,52 +37,5 @@ const useTodoList = () => {
   return { todos };
 }
 
+export default useTodoList;
 
-// Change from Params to Todo
-// const intitializeTodo = (todo: Params) => {
-//     const date = new Date()
-//     return {
-//       id: date.getTime(),
-//       title: todo.title,
-//       description: todo.description,
-//       status: todo.status,
-//       createdAt: date,
-//       updatedAt: date,
-//     } as Todo
-//   }
-
-// // Get Todo by id 
-// const getTodo = (id: number) => {
-//   const todo = state.find((todo: Todo) => todo.id === id)
-//   // In case of not existing todo
-//   if (!todo) {
-//     throw new Error(`cannot find todo by id:${id}`)
-//   }
-//   return todo
-// }
-
-// Add Todo
-// const addTodo = (todo: Params) => {
-//     setState([...state, intitializeTodo(todo)]);
-// }
-
-// // Update Todo by id
-// const updateTodo = (id: number, newTodo: Todo) => {
-//     // findIndex method returns the position of id
-//     // If todo.id didn't match id, findIndex returns -1
-//     const index = state.findIndex((todo: Todo) => todo.id === id)
-//     if (index === -1) {
-//         throw new Error(`cannot find todo by id:${id}`)
-//     }
-//     // Update Todo by index of list
-//     setState(state.map((originalTodo, index) => (index === id ? originalTodo : newTodo)))
-// }
-
-// // Delete by id
-// const deleteTodo = (id: number) => {
-//     // state.todos = todos other than this id
-//     setState(state.filter((todo: Todo) => todo.id !== id))
-// }
-
-
-export default useTodoList
