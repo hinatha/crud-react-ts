@@ -1,6 +1,6 @@
 import useTodoList from '../hooks/useTodoList'
 
-function App() {
+const Todo = () => {
   // get each method or value from custom hooks
   const { todos } = useTodoList();
 
@@ -19,4 +19,4 @@ function App() {
   );
 }
 
-export default App;
+export default Todo;
