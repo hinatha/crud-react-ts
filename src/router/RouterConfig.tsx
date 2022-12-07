@@ -1,4 +1,3 @@
-import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Todo from "../components/Todo";
 import AddTodo from "../components/AddTodo";
