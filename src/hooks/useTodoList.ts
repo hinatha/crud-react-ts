@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Todo, Params } from './types';
+import { useState, useCallback } from "react";
+import { Todo, Params } from '../types/index';
 
 // It's mock
 const mockTodo: Todo[] = [
@@ -34,8 +34,36 @@ const useTodoList = () => {
   // Set useState and first value is mockTodo
   const [todos, setTodos] = useState<Todo[]>(mockTodo);
 
-  return { todos };
+  // Add Todo logic
+  // Memoization by useCallback
+  const addTodo = useCallback(
+    (params: Params) => {
+      // Change type from Param to Todo
+      const todo = intitializeTodo(params)
+      // Generate new todo list to change state
+      const newTodos = [...todos];
+      // Add todo to todo list
+      newTodos.push(todo);
+      setTodos(newTodos);
+    },
+    // Set todos as dependent array
+    [todos]
+  );
+
+  // Function of changing param to Todo
+  const intitializeTodo = (todo: Params) =>  {
+    const date = new Date()
+    return {
+      id: date.getTime(),
+      title: todo.title,
+      description: todo.description,
+      status: todo.status,
+      createdAt: date,
+      updatedAt: date,
+    } as Todo
+  }
+
+  return { todos, addTodo };
 }
 
 export default useTodoList;
-
