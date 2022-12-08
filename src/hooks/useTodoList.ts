@@ -1,38 +1,12 @@
-import { useState, useCallback } from "react";
+import { useContext, useCallback } from "react";
 import { Todo, Params } from '../types/index';
-
-// It's mock
-const mockTodo: Todo[] = [
-  {
-    id: 1,
-    title: 'todo1',
-    description: '1つ目',
-    status: 'waiting',
-    createdAt: new Date('2020-12-01'),
-    updatedAt: new Date('2020-12-01'),
-  },
-  {
-    id: 2,
-    title: 'todo2',
-    description: '2つ目',
-    status: 'waiting',
-    createdAt: new Date('2020-12-02'),
-    updatedAt: new Date('2020-12-02'),
-  },
-  {
-    id: 3,
-    title: 'todo3',
-    description: '3つ目',
-    status: 'working',
-    createdAt: new Date('2020-12-03'),
-    updatedAt: new Date('2020-12-04'),
-  },
-]
+import { TodosContext } from '../components/providers/TodosProvider';
 
 // Custom hook of TodoList
 const useTodoList = () => {
-  // Set useState and first value is mockTodo
-  const [todos, setTodos] = useState<Todo[]>(mockTodo);
+
+  // Get todosState from TodosContext
+  const { todos, setTodos } = useContext(TodosContext);
 
   // Add Todo logic
   // Memoization by useCallback
@@ -46,8 +20,8 @@ const useTodoList = () => {
       newTodos.push(todo);
       setTodos(newTodos);
     },
-    // Set todos as dependent array
-    [todos]
+    // Set todos and setTodos as dependent relation
+    [todos, setTodos]
   );
 
   // Function of changing param to Todo
