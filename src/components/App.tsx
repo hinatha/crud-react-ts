@@ -1,8 +1,10 @@
-import useTodoList from '../hooks/useTodoList'
 import { Link } from "react-router-dom";
+import { Todo } from '../types/index';
+import useTodoList from '../hooks/useTodoList'
 
-const Todo = () => {
-  // get each method or value from custom hooks
+const App = () => {
+
+  // Get Todo List from custom hooks
   const { todos } = useTodoList();
 
   return (
@@ -10,7 +12,7 @@ const Todo = () => {
         <p>Display</p>
         {/* Show todo list */}
         <ul>
-          {todos.map((todo) => (
+          {todos.map((todo: Todo) => (
             <li>
                 <p>{todo.title}</p>
             </li>
@@ -22,4 +24,4 @@ const Todo = () => {
   );
 }
 
-export default Todo;
+export default App;

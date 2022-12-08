@@ -1,14 +1,14 @@
-import { ChangeEvent, ChangeEventHandler, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { Status, Params } from '../types/index';
 import useTodoList from '../hooks/useTodoList'
 
 
 const AddTodo = () => {
-    // Get addTodo method from custom hooks
-    const { todos, addTodo } = useTodoList();
+
     // Todo form(param) State
     const [param, setParam] = useState<Params>({ title: '', description: '', status: 'waiting' });
+
     // To redirect to top package
     const navigate = useNavigate();
 
@@ -30,9 +30,12 @@ const AddTodo = () => {
         setParam((prevParam) => ({ ...prevParam, status: newStatus }));
     }
 
+    // Get addTodo method from custom hooks
+    const { addTodo } = useTodoList();
+
     // When push add button
     const onClickAdd = () => {
-        // Execute add todo
+        // Execute add todo method
         addTodo(param);
         // Redirect to top page
         navigate('/');
