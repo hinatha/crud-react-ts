@@ -1,13 +1,12 @@
-import React from 'react';
-import './App.css';
+import RouterConfig from "./router/RouterConfig";
+import { TodosProvider } from './components/providers/TodosProvider';
 
-function App() {
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-          Hello, world
-      </header>
-    </div>
+    <TodosProvider> {/* Set provider */}
+      <RouterConfig />
+    </TodosProvider>
   );
 }
 
