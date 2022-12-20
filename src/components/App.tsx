@@ -4,10 +4,10 @@ import { Todo } from '../types/index';
 import TodoItem from "./TodoItem";
 import useTodoList from '../hooks/useTodoList'
 
-const App = () => {
+const App = async () => {
 
   // Get Todo List from custom hooks
-  const { todos, deleteTodo } = useTodoList();
+  const { todos, fetchTodos, deleteTodo } = useTodoList();
 
   // To change page
   const navigate = useNavigate();
@@ -31,6 +31,8 @@ const App = () => {
     // Set deleteTodo as dependent relation
     [deleteTodo]
   );
+
+  await fetchTodos();
 
   return (
     <div>
