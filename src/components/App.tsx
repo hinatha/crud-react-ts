@@ -1,5 +1,5 @@
 import { useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Todo } from '../types/index';
 import TodoItem from "./TodoItem";
 import useTodoList from '../hooks/useTodoList'
@@ -9,10 +9,17 @@ const App = () => {
   // Get Todo List from custom hooks
   const { todos, deleteTodo } = useTodoList();
 
+  // To change page
+  const navigate = useNavigate();
+
   // When clicking title, move to the edit page
-  const onClickTitle = (id: number) => {
-    // [TODO] Move to edit page
-  }
+  const onClickTitle = useCallback(
+    (id: number) => {
+      // Move to edit page
+      navigate("/edit/" + id);
+    },
+    []
+  );
 
   // When pushing delete button, receiving todo.id
   // Memoization by useCallback

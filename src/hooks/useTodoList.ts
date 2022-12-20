@@ -8,6 +8,19 @@ const useTodoList = () => {
   // Get todosState from TodosContext
   const { todos, setTodos } = useContext(TodosContext);
 
+  // Get Todo by id 
+  const getTodo = useCallback(
+    (id: number) => {
+      const todo = todos.find((todo) => todo.id === id)
+      // In case of not existing todo
+      if (!todo) {
+        throw new Error(`cannot find todo by id:${id}`)
+      }
+      return todo
+    },
+    [todos]
+  );
+
   // Add Todo logic
   // Memoization by useCallback
   const addTodo = useCallback(
@@ -23,6 +36,22 @@ const useTodoList = () => {
     // Set todos and setTodos as dependent relation
     [todos, setTodos]
   );
+
+  // Update Todo by id
+  const updateTodo = useCallback(
+    (id: number, todo: Todo) => {
+      // findIndex method returns the position of id
+      // If todo.id didn't match id, findIndex returns -1
+      const index = todos.findIndex((todo) => todo.id === id)
+      if (index === -1) {
+        throw new Error(`cannot find todo by id:${id}`)
+      }
+      // Update Todo by index of list
+      todos[index] = todo
+    },
+    [todos]
+  );
+
 
   // Delete Todo logic
   // Memoization by useCallback
@@ -50,7 +79,7 @@ const useTodoList = () => {
     } as Todo
   }
 
-  return { todos, addTodo, deleteTodo };
+  return { todos, getTodo, addTodo, updateTodo, deleteTodo };
 }
 
 export default useTodoList;
