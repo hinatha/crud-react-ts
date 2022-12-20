@@ -24,6 +24,19 @@ const useTodoList = () => {
     [todos, setTodos]
   );
 
+  // Delete Todo logic
+  // Memoization by useCallback
+  const deleteTodo = useCallback(
+    (id: number) => {
+      // Generate new Todo removed the todo
+      const newTodos = todos.filter((todo) => todo.id !== id)
+      setTodos(newTodos);
+    },
+    // Set todos and setTodos as dependent relation
+    [todos, setTodos]
+  );
+
+
   // Function of changing param to Todo
   const intitializeTodo = (todo: Params) =>  {
     const date = new Date()
@@ -37,7 +50,7 @@ const useTodoList = () => {
     } as Todo
   }
 
-  return { todos, addTodo };
+  return { todos, addTodo, deleteTodo };
 }
 
 export default useTodoList;
