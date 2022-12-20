@@ -23,7 +23,7 @@ const useTodoList = () => {
       // Set storageTodos as todo state
       setTodos(storageTodos);
     },
-    [setTodos]
+    [TodoRepository, setTodos]
   );
 
   // Get Todo by id
@@ -52,14 +52,14 @@ const useTodoList = () => {
       setTodos(newTodos);
     },
     // Set todos and setTodos as dependent relation
-    [todos, setTodos]
+    [TodoRepository, todos, setTodos]
   );
 
   // Update Todo by id
   const updateTodo = useCallback(
     async (id: number, todo: Todo) => {
       // Update Todo of localstorage
-      const result = await TodoRepository.update(id, todo);
+      await TodoRepository.update(id, todo);
       // findIndex method returns the position of id
       // If todo.id didn't match id, findIndex returns -1
       const index = todos.findIndex((todo) => todo.id === id)
@@ -69,7 +69,7 @@ const useTodoList = () => {
       // Update Todo by index of list
       todos[index] = todo;
     },
-    [todos]
+    [TodoRepository, todos]
   );
 
 
@@ -84,7 +84,7 @@ const useTodoList = () => {
       setTodos(newTodos);
     },
     // Set todos and setTodos as dependent relation
-    [todos, setTodos]
+    [TodoRepository, todos, setTodos]
   );
 
   return { todos, fetchTodos, getTodo, addTodo, updateTodo, deleteTodo };
