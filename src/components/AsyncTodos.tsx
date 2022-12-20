@@ -37,6 +37,7 @@ const AsyncTodos = () => {
   useEffect(() => {
       (async() => {
         await fetchTodos();
+        console.log("Executed fetchTodos")
       })()
     },
     [fetchTodos]

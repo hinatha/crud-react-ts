@@ -7,7 +7,7 @@ const App = () => {
     return (
         <div>
             <h2>Show Todo List</h2>
-            <Suspense fallback={<p>loading...</p>}>
+            <Suspense fallback={<span>waiting...</span>}>
                 <AsyncTodos />
             </Suspense>
             <Link to="new">Add Todo</Link>
