@@ -18,10 +18,12 @@ const useTodoList = () => {
     async () => {
       // getAll() is Promise
       // Get all todos
-      const storageTodos = await TodoRepository.getAll()
+      const storageTodos = await TodoRepository.getAll();
 
       // Set storageTodos as todo state
       setTodos(storageTodos);
+
+      console.log("Completed setting storageTodos")
     },
     [TodoRepository, setTodos]
   );
