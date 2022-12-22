@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import App from "../components/App";
-import AddTodo from "../components/AddTodo";
-import EditTodo from "../components/EditTodo";
+import App from "../views/App";
+import AddTodo from "../views/AddTodo";
+import EditTodo from "../views/EditTodo";
 
 const RouterConfig = () => {
   return (

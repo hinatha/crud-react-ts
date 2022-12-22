@@ -1,18 +1,16 @@
-import { Suspense } from "react";
 import { ErrorBoundary } from 'react-error-boundary'
-import ErrorFallback from './ErrorFallback'
+import ErrorFallback from '../components/ErrorFallback'
 import { Link } from "react-router-dom";
-import AsyncTodos from "./AsyncTodos";
+import AsyncTodos from "../components/AsyncTodos";
 
 const App = () => {
 
     return (
         <div>
             <h2>Show Todo List</h2>
+            {/* Set error handler */}
             <ErrorBoundary FallbackComponent={ErrorFallback}>
-                <Suspense fallback={<p>loading...</p>}>
-                    <AsyncTodos />
-                </Suspense>
+                <AsyncTodos />
             </ErrorBoundary>
             <Link to="new">Add Todo</Link>
         </div>
