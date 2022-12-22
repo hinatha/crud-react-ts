@@ -30,7 +30,7 @@ const mockTodo: Todo[] = [
 ]
 
 export const TodosContext = createContext<TodosState>({
-  todos: mockTodo, // Set mockTodo as initial value
+  todos: [], // Set mockTodo as initial value
   setTodos: () => {}, // Set as method
 });
 
