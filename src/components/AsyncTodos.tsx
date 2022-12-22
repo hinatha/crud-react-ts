@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Todo } from '../types/index';
 import TodoItem from "./TodoItem";
@@ -32,12 +32,19 @@ const AsyncTodos = () => {
     [deleteTodo]
   );
 
+  // Define loading state
+  const [loading, setLoading] = useState(false);
+
   // Call fetchTodos
   // Prevent method from re-render
   useEffect(() => {
       (async() => {
+        // Turn on loading
+        setLoading(true);
+        // Get Todos from localStorage and set todos
         await fetchTodos();
-        console.log("Executed fetchTodos")
+        // Turn off loading
+        setLoading(false);
       })()
     },
     [fetchTodos]
@@ -45,12 +52,15 @@ const AsyncTodos = () => {
 
   return (
     <div>
-        {/* Show todo list */}
+      {loading ? (
+        <div>Loading ...</div>
+      ) : (
         <ul>
-          {todos.map((todo: Todo) => (
+          {todos?.map((todo: Todo) => (
             <TodoItem todo={todo} key={todo.id} onClickTitle={onClickTitle} onClickDelete={onClickDelete} />
           ))}
         </ul>
+      )}
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import RouterConfig from "./router/RouterConfig";
-import { TodosProvider } from './components/providers/TodosProvider';
+import { TodosProvider } from './providers/TodosProvider';
 
 
 const App = () => {

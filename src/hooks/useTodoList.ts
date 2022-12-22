@@ -1,6 +1,6 @@
 import { useContext, useCallback } from "react";
 import { Todo, Params } from '../types/index';
-import { TodosContext } from '../components/providers/TodosProvider';
+import { TodosContext } from '../providers/TodosProvider';
 import Repository, { TODOS } from '../clients/RepositoryFactory'
 
 
@@ -22,8 +22,6 @@ const useTodoList = () => {
 
       // Set storageTodos as todo state
       setTodos(storageTodos);
-
-      console.log("Completed setting storageTodos")
     },
     [TodoRepository, setTodos]
   );
