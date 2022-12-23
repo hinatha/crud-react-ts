@@ -1,4 +1,62 @@
-# Getting Started with Create React App
+# 1. Project overview
+
+## (1)App Features
+
+This app is able to use below function.
+
+User story
+
+- You can add todo.
+- You can see todos.
+- You can delete todo.
+- You can edit todo.
+
+## (2)Project Structure
+
+```bash
+.
+├── .gitignore
+├── README.md
+├── package-lock.json
+├── package.json
+├── public
+│   └── index.html
+├── src
+│   ├── App.tsx
+│   ├── clients
+│   │   ├── RepositoryFactory.ts
+│   │   └── TodoClient
+│   │       ├── index.ts
+│   │       ├── mock.ts
+│   │       └── types.ts
+│   ├── components
+│   │   ├── AsyncTodos.tsx
+│   │   ├── ErrorFallback.tsx
+│   │   └── TodoItem.tsx
+│   ├── css
+│   │   └── TodoItem.css
+│   ├── hooks
+│   │   └── useTodoList.ts
+│   ├── index.tsx
+│   ├── providers
+│   │   └── TodosProvider.tsx
+│   ├── router
+│   │   └── RouterConfig.tsx
+│   ├── types
+│   │   └── index.ts
+│   └── views
+│       ├── AddTodo.tsx
+│       ├── App.tsx
+│       └── EditTodo.tsx
+├── tsconfig.json
+└── yarn.lock
+
+11 directories, 24 files
+```
+
+# 2. Usage
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
